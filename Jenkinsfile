@@ -11,7 +11,7 @@ pipeline {
     stages {
     stage('Clone repository') {
         steps {
-            git branch: 'master', credentialsId: '880917La@', url: https://github.com/rrmartinez87/SQLPoC.git'
+            sh 'sudo rm -r *;sudo git clone https://github.com/rrmartinez87/SQLPoC.git'
             }
         }
 	stage('Set Terraform path') {
