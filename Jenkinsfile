@@ -1,9 +1,12 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-        }
+    parameters {
+        choice(
+            choices: ['create', 'destroy'],
+            description: 'Select action to perform',
+            name: 'REQUESTED_ACTION'
+        )
     }
+    agent any
 
     stages {
 
@@ -14,7 +17,16 @@ pipeline {
         }
         stage('git clone') {
             steps {
-                sh 'sudo rm -r *;sudo git clone https://github.com/rrmartinez87/SQLPoC.git'
+                git branch: 'master', credentialsId: '880917La@', url: https://github.com/rrmartinez87/SQLPoC.git'
+            }
+        }
+		stage('Set Terraform path') {
+            steps {
+                script {
+                    def tfHome = tool name: 'Terraform'
+                    env.PATH = "${tfHome}:${env.PATH}"
+                }
+                sh 'terraform -version'
             }
         }
         stage('tfsvars create') {
