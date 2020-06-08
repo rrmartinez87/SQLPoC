@@ -23,27 +23,32 @@ pipeline {
                 sh 'terraform -version'
             }
         }
-        stage('tfsvars create') {
-            steps {
-                sh 'sudo cp /home/ec2-user/variables.tf ./jenkins'
+        stage('Terraform Apply') {
+            when {
+                expression { params.REQUESTED_ACTION == 'create'}
+            }
+		steps {
+                sh '''
+                terraform plan -no-color -out out.plan
+                terraform apply -no-color out.plan
+                '''
             }
         }
-        stage('terraform init') {
+		stage('Terraform Destroy') {
+            when {
+                expression { params.REQUESTED_ACTION == 'destroy' }
+            }
             steps {
-                sh 'sudo /home/ec2-user/terraform init ./jenkins'
+            sh '''
+            terraform destroy -no-color --auto-approve
+            '''
             }
         }
-        stage('terraform plan') {
+        stage('Clean WorkSpace') {
             steps {
-                sh 'ls ./jenkins; sudo /home/ec2-user/terraform plan ./jenkins'
+                echo "Wiping workspace $pwd"
+                cleanWs()
             }
         }
-        stage('terraform ended') {
-            steps {
-                sh 'echo "Ended....!!"'
-            }
-        }
-
-        
     }
 }
