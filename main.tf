@@ -6,9 +6,9 @@ provider "azurerm" {
     version = "~>2.0"
     features {}
 	subscription_id = "a7b78be8-6f3c-4faf-a43d-285ac7e92a05"
-	#client_id       = "5898b2d-fb99-400a-9cdd-a277b1fd7ad7"
-	#client_secret   = "5a58e09c-8a6e-4e2b-89b5-98145930ccdd"
-	#tenant_id       = "c160a942-c869-429f-8a96-f8c8296d57db"
+	client_id       = "5898b2d-fb99-400a-9cdd-a277b1fd7ad7"
+	client_secret   = "5a58e09c-8a6e-4e2b-89b5-98145930ccdd"
+	tenant_id       = "c160a942-c869-429f-8a96-f8c8296d57db"
  }
 # 1 Resource_Group
 resource "azurerm_resource_group" "rg" {
