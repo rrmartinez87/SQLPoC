@@ -1,10 +1,4 @@
-  variable "ssh_keys" {
-  type = "list"
-  default = [{
-    path     = "/home/testadmin/.ssh/authorized_keys"
-    key_data = "ssh-rsa SomeKeyDataStringHere"
-  }]
-  }
+
 /*******************************
 Resource Group variables
 *******************************/
