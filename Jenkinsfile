@@ -34,6 +34,7 @@ pipeline {
                 #-backend-config="container_name=tfstate" \
                 #-backend-config="access_key=$StorageAccountAccessKey" \
                 #-backend-config="key=terraform.sqltfstate"
+		terraform init -no-color -out out.plan
 		terraform plan -no-color -out out.plan
                 terraform apply -no-color out.plan
                 '''
