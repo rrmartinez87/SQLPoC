@@ -29,6 +29,7 @@ pipeline {
             }
 		steps {
                 sh '''
+				cd SQLPoC
                 terraform plan -no-color -out out.plan
                 terraform apply -no-color out.plan
                 '''
