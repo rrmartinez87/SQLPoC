@@ -9,23 +9,17 @@ pipeline {
     agent any
 
     stages {
-
-        stage('terraform started') {
-            steps {
-                sh 'echo "Started...!" '
+    stage('Clone repository') {
+        steps {
+            git branch: 'master', credentialsId: '880917La@', url: https://github.com/rrmartinez87/SQLPoC.git'
             }
         }
-        stage('git clone') {
-            steps {
-                git branch: 'master', credentialsId: '880917La@', url: https://github.com/rrmartinez87/SQLPoC.git'
-            }
-        }
-		stage('Set Terraform path') {
-            steps {
-                script {
-                    def tfHome = tool name: 'Terraform'
-                    env.PATH = "${tfHome}:${env.PATH}"
-                }
+	stage('Set Terraform path') {
+        steps {
+             script {
+                 def tfHome = tool name: 'Terraform'
+                  env.PATH = "${tfHome}:${env.PATH}"
+             }
                 sh 'terraform -version'
             }
         }
