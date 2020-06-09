@@ -125,6 +125,29 @@ variable "address_allocation" {
   default = "Dynamic"  
 }
 
+
+variable "name" {
+  description = "The name for cluster"
+  type        = string
+  default     = "aks"
+}
+
+variable "rbac_enabled" {
+  default     = true
+  description = "Boolean to enable or disable role-based access control"
+  type        = bool
+}
+
+variable "client_id" {
+  description = "The Client ID (appId) for the Service Principal used for the AKS deployment"
+  type        = string
+}
+
+variable "client_secret" {
+  description = "The Client Secret (password) for the Service Principal used for the AKS deployment"
+  type        = string
+}
+
 /*variable "resource_group_name" {
   description = "Default resource group name that the database will be created in."
   default     = "myapp-rg"
