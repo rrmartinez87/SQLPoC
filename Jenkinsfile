@@ -29,7 +29,7 @@ pipeline {
 	    }
 	    options {
                 azureKeyVault(
-                    credentialID: 'jenkins-sp', 
+                    credentialID: 'jenkins-sp-sql', 
                     keyVaultURL: 'https://Sqltfstatekv-test-03.vault.azure.net/', 
                     secrets: [
                         [envVariable: 'TF_VAR_client_id', name: 'spn-id', secretType: 'Secret'],
@@ -58,7 +58,7 @@ pipeline {
             }
 	    options {
                 azureKeyVault(
-                    credentialID: 'jenkins-sp', 
+                    credentialID: 'jenkins-sp-sql', 
                     keyVaultURL: 'https://Sqltfstatekv-test-03.vault.azure.net/', 
                     secrets: [
                         [envVariable: 'TF_VAR_client_id', name: 'spn-id', secretType: 'Secret'],
@@ -76,8 +76,7 @@ pipeline {
             -backend-config="container_name=sqltfstate" \
             -backend-config="access_key=$StorageAccountAccessKey" \
             -backend-config="key=aks.sqltfstate"
-
-	    terraform destroy -no-color --auto-approve
+             terraform destroy -no-color --auto-approve
             '''
             }
         }
