@@ -47,8 +47,8 @@ pipeline {
                 -backend-config="container_name=sqltfstate" \
                 -backend-config="access_key=$StorageAccountAccessKey" \
                 -backend-config="key=terraform.sqltfstate"
-		terraform plan -no-color -out out.plan --auto-approve
-                terraform apply -no-color out.plan --auto-approve
+		terraform plan -no-color -out out.plan -lock=false
+                terraform apply -no-color out.plan -lock=false
                 '''
             }
         }
