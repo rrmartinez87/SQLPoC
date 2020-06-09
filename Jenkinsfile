@@ -34,7 +34,7 @@ pipeline {
                     secrets: [
                         [envVariable: 'TF_VAR_client_id', name: 'spn-id', secretType: 'Secret'],
                         [envVariable: 'TF_VAR_client_secret', name: 'spn-secret', secretType: 'Secret'],
-                        [envVariable: 'StorageAccountAccessKey', name: 'tfstgkey', secretType: 'Secret']
+                        [envVariable: 'StorageAccountAccessKey', name: 'sqltfstgkey', secretType: 'Secret']
                     ]
                 )
             }	
@@ -63,7 +63,7 @@ pipeline {
                     secrets: [
                         [envVariable: 'TF_VAR_client_id', name: 'spn-id', secretType: 'Secret'],
                         [envVariable: 'TF_VAR_client_secret', name: 'spn-secret', secretType: 'Secret'],
-                        [envVariable: 'StorageAccountAccessKey', name: 'tfstgkey', secretType: 'Secret']
+                        [envVariable: 'StorageAccountAccessKey', name: 'sqltfstgkey', secretType: 'Secret']
                     ]
                 )
             }		
