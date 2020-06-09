@@ -46,7 +46,7 @@ pipeline {
 		terraform init -no-color -backend-config="storage_account_name=sqltfstatestgtest" \
                 -backend-config="container_name=sqltfstate" \
                 -backend-config="access_key=$StorageAccountAccessKey" \
-                -backend-config="key=aks.sqltfstate"
+                -backend-config="key=terraform.sqltfstate"
 		terraform plan -no-color -out out.plan
                 terraform apply -no-color out.plan
                 '''
@@ -75,7 +75,7 @@ pipeline {
             terraform init -no-color -backend-config="storage_account_name=sqltfstatestgtest" \
             -backend-config="container_name=sqltfstate" \
             -backend-config="access_key=$StorageAccountAccessKey" \
-            -backend-config="key=aks.sqltfstate"
+            -backend-config="key=terraform.sqltfstate"
              terraform destroy -no-color --auto-approve
             '''
             }
