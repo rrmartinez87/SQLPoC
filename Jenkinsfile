@@ -69,7 +69,7 @@ pipeline {
             }		
             steps {
             sh '''
-            cd tfaks
+            cd SQLPoC
             export TF_VAR_client_id=$TF_VAR_client_id
             export TF_VAR_client_secret=$TF_VAR_client_secret
             terraform init -no-color -backend-config="storage_account_name=sqltfstatestgtest" \
